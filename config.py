@@ -6,3 +6,4 @@ SMOOTHING = 0.8
 STEERING_RANGE = 45      # degrees
 
 SHOW_LANDMARKS = True
+# Addressed TODO from previous session

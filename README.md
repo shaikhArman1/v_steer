@@ -5,3 +5,5 @@
 <!-- commit-log: 2026-02-06T15:18:10 - refactor: move config values to constants file -->
 
 <!-- commit-log: 2026-02-08T20:45:24 - fix: adjust threshold values based on testing -->
+
+<!-- commit-log: 2026-02-11T12:00:54 - refactor: rename variables for clarity -->

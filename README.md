@@ -7,3 +7,5 @@
 <!-- commit-log: 2026-02-08T20:45:24 - fix: adjust threshold values based on testing -->
 
 <!-- commit-log: 2026-02-11T12:00:54 - refactor: rename variables for clarity -->
+
+<!-- commit-log: 2026-02-18T20:24:12 - feat: improve error messages for user feedback -->

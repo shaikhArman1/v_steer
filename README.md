@@ -21,3 +21,5 @@
 <!-- commit-log: 2026-03-11T18:54:54 - feat: add retry logic for network requests -->
 
 <!-- commit-log: 2026-03-12T13:01:33 - docs: add README section for local setup -->
+
+<!-- commit-log: 2026-03-17T17:14:04 - feat: add retry logic for network requests -->

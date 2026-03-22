@@ -25,3 +25,5 @@
 <!-- commit-log: 2026-03-17T17:14:04 - feat: add retry logic for network requests -->
 
 <!-- commit-log: 2026-03-21T22:51:54 - docs: add README section for local setup -->
+
+<!-- commit-log: 2026-03-22T22:27:43 - chore: update requirements.txt with pinned versions -->

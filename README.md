@@ -27,3 +27,5 @@
 <!-- commit-log: 2026-03-21T22:51:54 - docs: add README section for local setup -->
 
 <!-- commit-log: 2026-03-22T22:27:43 - chore: update requirements.txt with pinned versions -->
+
+<!-- commit-log: 2026-03-24T16:07:02 - refactor: clean up utility functions and improve code readability -->

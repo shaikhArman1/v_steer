@@ -33,3 +33,5 @@
 <!-- commit-log: 2026-03-25T17:24:34 - fix: resolve edge case in data processing pipeline -->
 
 <!-- commit-log: 2026-03-28T10:22:16 - docs: update inline comments and docstrings -->
+
+<!-- commit-log: 2026-03-29T09:25:49 - feat: add logging to main processing module -->

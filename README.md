@@ -37,3 +37,5 @@
 <!-- commit-log: 2026-03-29T09:25:49 - feat: add logging to main processing module -->
 
 <!-- commit-log: 2026-05-08T12:16:09 - feat: add logging to main processing module -->
+
+<!-- commit-log: 2026-05-08T14:09:54 - feat: add input validation and error handling -->

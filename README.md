@@ -39,3 +39,5 @@
 <!-- commit-log: 2026-05-08T12:16:09 - feat: add logging to main processing module -->
 
 <!-- commit-log: 2026-05-08T14:09:54 - feat: add input validation and error handling -->
+
+<!-- commit-log: 2026-05-08T15:49:46 - fix: correct file path handling on Windows systems -->

@@ -41,3 +41,5 @@
 <!-- commit-log: 2026-05-08T14:09:54 - feat: add input validation and error handling -->
 
 <!-- commit-log: 2026-05-08T15:49:46 - fix: correct file path handling on Windows systems -->
+
+<!-- commit-log: 2026-05-08T20:39:27 - fix: handle None types in response parser -->

@@ -35,3 +35,5 @@
 <!-- commit-log: 2026-03-28T10:22:16 - docs: update inline comments and docstrings -->
 
 <!-- commit-log: 2026-03-29T09:25:49 - feat: add logging to main processing module -->
+
+<!-- commit-log: 2026-05-08T12:16:09 - feat: add logging to main processing module -->

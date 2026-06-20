@@ -49,3 +49,5 @@
 <!-- commit-log: 2026-06-07T12:13:49 - perf: optimize loop logic to reduce processing time -->
 
 <!-- commit-log: 2026-06-20T10:03:56 - refactor: move config values to constants file -->
+
+<!-- commit-log: 2026-06-20T18:29:20 - docs: add README section for local setup -->

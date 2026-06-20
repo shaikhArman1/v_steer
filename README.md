@@ -47,3 +47,5 @@
 <!-- commit-log: 2026-05-08T22:21:39 - fix: resolve edge case in data processing pipeline -->
 
 <!-- commit-log: 2026-06-07T12:13:49 - perf: optimize loop logic to reduce processing time -->
+
+<!-- commit-log: 2026-06-20T10:03:56 - refactor: move config values to constants file -->

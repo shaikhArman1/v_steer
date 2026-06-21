@@ -51,3 +51,5 @@
 <!-- commit-log: 2026-06-20T10:03:56 - refactor: move config values to constants file -->
 
 <!-- commit-log: 2026-06-20T18:29:20 - docs: add README section for local setup -->
+
+<!-- commit-log: 2026-06-21T16:04:40 - feat: improve error messages for user feedback -->

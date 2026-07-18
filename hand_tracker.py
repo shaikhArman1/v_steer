@@ -31,6 +31,7 @@ class HandTracker:
             ):
 
                 lmList = []
+                rawLandmarks = []
 
                 h, w, _ = frame.shape
 
@@ -43,9 +44,11 @@ class HandTracker:
                         )
                     )
 
+                    rawLandmarks.append(lm)
+
                 label = handedness.classification[0].label
 
-                handData.append((label, lmList))
+                handData.append((label, lmList, rawLandmarks))
 
                 self.drawer.draw_landmarks(
                     frame,

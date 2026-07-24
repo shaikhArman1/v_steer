@@ -1,25 +1,58 @@
 import cv2
 import math
+import joblib
+import pandas as pd
 from hand_tracker import HandTracker
+import vgamepad as vg
 
 # -----------------------------
 # Initialize webcam and tracker
 # -----------------------------
 cap = cv2.VideoCapture(0)
 tracker = HandTracker()
+left_model = joblib.load("left_model.pkl")
+right_model = joblib.load("right_model.pkl")
+gamepad = vg.VX360Gamepad()
 
 # Steering smoothing
 previous_steering = 0.0
-SMOOTHING = 0.8
+SMOOTHING = 0.5
 MAX_ANGLE = 35.0
 
-def distance(p1, p2):
-    return math.sqrt(
-        (p1[0] - p2[0]) ** 2 +
-        (p1[1] - p2[1]) ** 2
-    )
+left_stable = "UNKNOWN"
+right_stable = "UNKNOWN"
+
+left_candidate = None
+right_candidate = None
+
+left_count = 0
+right_count = 0
+
+STABLE_FRAMES = 1
+
+def extract_features(rawLm):
+
+    wrist = rawLm[0]
+
+    features = []
+
+    for lm in rawLm:
+
+        features.extend([
+            lm.x - wrist.x,
+            lm.y - wrist.y,
+            lm.z - wrist.z
+        ])
+
+    return features
+
+left_prediction = "UNKNOWN"
+right_prediction = "UNKNOWN"
 
 while True:
+    
+    left_prediction = "UNKNOWN"
+    right_prediction = "UNKNOWN"
 
     success, frame = cap.read()
 
@@ -31,9 +64,10 @@ while True:
 
     # Detect hands
     frame, hands = tracker.findHands(frame)
-
+    
     left = None
     right = None
+    
 
     # -----------------------------
     # Detect left and right hands
@@ -60,93 +94,70 @@ while True:
             right = (x, y)
             
                 # -----------------------------
-        # Thumb Distance Experiment
-        # -----------------------------
+        features = extract_features(rawLm)
 
-        thumb_tip = lmList[4]
-        thumb_mcp = lmList[2]
+        if label == "Left":
 
-        index_mcp = lmList[5]
-        middle_mcp = lmList[9]
-        pinky_mcp = lmList[17]
-        wrist = lmList[0]
+            features = pd.DataFrame(
+                [extract_features(rawLm)],
+                columns=left_model.feature_names_in_
+            )
 
-        # Raw distances
-        thumb_to_palm = distance(thumb_tip, middle_mcp)
-        thumb_to_index = distance(thumb_tip, index_mcp)
-        thumb_to_pinky = distance(thumb_tip, pinky_mcp)
-        thumb_to_wrist = distance(thumb_tip, wrist)
-        thumb_length = distance(thumb_tip, thumb_mcp)
+            left_prediction = left_model.predict(features)[0]
 
-        # Normalize by palm width
-        palm_width = distance(index_mcp, pinky_mcp)
+            cv2.putText(
+                frame,
+                f"LEFT : {left_stable}",
+                (20,120),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.8,
+                (0,0,255),
+                2
+            )
 
-        thumb_to_palm /= palm_width
-        thumb_to_index /= palm_width
-        thumb_to_pinky /= palm_width
-        thumb_to_wrist /= palm_width
-        thumb_length /= palm_width
-        
-        if label == "Right":
+        elif label == "Right":
 
-            color = (0,255,0)
-            startY = 120
+            features = pd.DataFrame(
+                [extract_features(rawLm)],
+                columns=right_model.feature_names_in_
+            )
 
+            right_prediction = right_model.predict(features)[0]
+
+            cv2.putText(
+                frame,
+                f"RIGHT : {right_stable}",
+                (20,170),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.8,
+                (0,255,0),
+                2
+            )
+            
+    # Left hand smoothing
+    if left_prediction != "UNKNOWN":
+
+        if left_prediction == left_candidate:
+            left_count += 1
         else:
+            left_candidate = left_prediction
+            left_count = 1
 
-            color = (0,0,255)
-            startY = 250
+        if left_count >= STABLE_FRAMES:
+            left_stable = left_candidate
 
-        cv2.putText(
-            frame,
-            f"{label} Palm : {thumb_to_palm:.2f}",
-            (20,startY),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.65,
-            color,
-            2
-        )
+    # Right hand smoothing
+    if right_prediction != "UNKNOWN":
 
-        cv2.putText(
-            frame,
-            f"{label} Index: {thumb_to_index:.2f}",
-            (20,startY+25),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.65,
-            color,
-            2
-        )
+        if right_prediction == right_candidate:
+            right_count += 1
+        else:
+            right_candidate = right_prediction
+            right_count = 1
 
-        cv2.putText(
-            frame,
-            f"{label} Pinky: {thumb_to_pinky:.2f}",
-            (20,startY+50),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.65,
-            color,
-            2
-        )
-
-        cv2.putText(
-            frame,
-            f"{label} Wrist: {thumb_to_wrist:.2f}",
-            (20,startY+75),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.65,
-            color,
-            2
-        )
-
-        cv2.putText(
-            frame,
-            f"{label} Thumb: {thumb_length:.2f}",
-            (20,startY+100),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.65,
-            color,
-            2
-        )
-
+        if right_count >= STABLE_FRAMES:
+            right_stable = right_candidate
+            
     # -----------------------------
     # Steering calculation
     # -----------------------------
@@ -177,6 +188,30 @@ while True:
         )
 
         previous_steering = steering
+        
+        # Steering -> Left analog stick
+        x_value = int(steering * 32767)
+
+        gamepad.left_joystick(
+            x_value=x_value,
+            y_value=0
+        )
+
+        gamepad.update()
+        
+        # Throttle
+        if right_stable == "THROTTLE":
+            gamepad.right_trigger(value=255)
+        else:
+            gamepad.right_trigger(value=0)
+
+        # Brake
+        if left_stable == "BRAKE":
+            gamepad.left_trigger(value=255)
+        else:
+            gamepad.left_trigger(value=0)
+
+        gamepad.update()
 
         # Display angle
         cv2.putText(

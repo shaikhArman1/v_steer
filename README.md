@@ -55,3 +55,5 @@
 <!-- commit-log: 2026-06-21T16:04:40 - feat: improve error messages for user feedback -->
 
 <!-- commit-log: 2026-08-05T16:46:08 - refactor: rename variables for clarity -->
+
+<!-- commit-log: 2026-08-05T20:18:57 - perf: optimize loop logic to reduce processing time -->

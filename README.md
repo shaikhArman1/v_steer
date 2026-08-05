@@ -53,3 +53,5 @@
 <!-- commit-log: 2026-06-20T18:29:20 - docs: add README section for local setup -->
 
 <!-- commit-log: 2026-06-21T16:04:40 - feat: improve error messages for user feedback -->
+
+<!-- commit-log: 2026-08-05T16:46:08 - refactor: rename variables for clarity -->

@@ -59,3 +59,5 @@
 <!-- commit-log: 2026-08-05T20:18:57 - perf: optimize loop logic to reduce processing time -->
 
 <!-- commit-log: 2026-08-08T10:36:42 - test: add unit tests for core functions -->
+
+<!-- commit-log: 2026-08-08T13:28:46 - fix: handle None types in response parser -->

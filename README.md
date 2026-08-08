@@ -65,3 +65,5 @@
 <!-- commit-log: 2026-08-08T13:05:13 - perf: optimize loop logic to reduce processing time -->
 
 <!-- commit-log: 2026-08-08T14:38:47 - test: add unit tests for core functions -->
+
+<!-- commit-log: 2026-08-08T17:58:15 - fix: resolve import ordering and circular dependency -->

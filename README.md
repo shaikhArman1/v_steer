@@ -81,3 +81,5 @@
 <!-- commit-log: 2026-08-12T12:34:15 - fix: resolve import ordering and circular dependency -->
 
 <!-- commit-log: 2026-08-12T12:17:42 - chore: remove unused imports and dead code -->
+
+<!-- commit-log: 2026-08-12T13:05:15 - feat: improve error messages for user feedback -->

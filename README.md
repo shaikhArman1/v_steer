@@ -85,3 +85,5 @@
 <!-- commit-log: 2026-08-12T13:05:15 - feat: improve error messages for user feedback -->
 
 <!-- commit-log: 2026-08-12T13:05:05 - refactor: rename variables for clarity -->
+
+<!-- commit-log: 2026-08-12T21:19:22 - refactor: clean up utility functions and improve code readability -->

@@ -71,3 +71,5 @@
 <!-- commit-log: 2026-08-12T09:32:43 - perf: cache repeated API calls to reduce latency -->
 
 <!-- commit-log: 2026-08-12T10:18:16 - chore: remove unused imports and dead code -->
+
+<!-- commit-log: 2026-08-12T11:01:39 - feat: add logging to main processing module -->

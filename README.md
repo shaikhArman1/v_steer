@@ -87,3 +87,5 @@
 <!-- commit-log: 2026-08-12T13:05:05 - refactor: rename variables for clarity -->
 
 <!-- commit-log: 2026-08-12T21:19:22 - refactor: clean up utility functions and improve code readability -->
+
+<!-- commit-log: 2026-08-12T22:07:55 - refactor: move config values to constants file -->

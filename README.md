@@ -77,3 +77,5 @@
 <!-- commit-log: 2026-08-12T11:50:18 - fix: handle None types in response parser -->
 
 <!-- commit-log: 2026-08-12T11:53:16 - fix: resolve import ordering and circular dependency -->
+
+<!-- commit-log: 2026-08-12T12:34:15 - fix: resolve import ordering and circular dependency -->

@@ -73,3 +73,5 @@
 <!-- commit-log: 2026-08-12T10:18:16 - chore: remove unused imports and dead code -->
 
 <!-- commit-log: 2026-08-12T11:01:39 - feat: add logging to main processing module -->
+
+<!-- commit-log: 2026-08-12T11:50:18 - fix: handle None types in response parser -->

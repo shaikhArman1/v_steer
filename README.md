@@ -101,3 +101,5 @@
 <!-- commit-log: 2026-09-01T15:37:32 - fix: adjust threshold values based on testing -->
 
 <!-- commit-log: 2026-09-01T16:16:49 - refactor: clean up utility functions and improve code readability -->
+
+<!-- commit-log: 2026-09-01T17:46:43 - docs: add README section for local setup -->

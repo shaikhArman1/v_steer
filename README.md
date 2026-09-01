@@ -93,3 +93,5 @@
 <!-- commit-log: 2026-09-01T11:22:13 - perf: optimize loop logic to reduce processing time -->
 
 <!-- commit-log: 2026-09-01T12:51:05 - chore: remove unused imports and dead code -->
+
+<!-- commit-log: 2026-09-01T13:17:52 - feat: add retry logic for network requests -->

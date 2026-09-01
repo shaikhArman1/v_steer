@@ -109,3 +109,5 @@
 <!-- commit-log: 2026-09-01T18:17:50 - feat: add retry logic for network requests -->
 
 <!-- commit-log: 2026-09-01T19:07:38 - fix: resolve import ordering and circular dependency -->
+
+<!-- commit-log: 2026-09-01T20:36:21 - fix: resolve import ordering and circular dependency -->
